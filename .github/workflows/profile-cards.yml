@@ -1,0 +1,21 @@
+name: Tarjetas de estadísticas del perfil
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # todos los días
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: vn7n24fzkq/github-profile-summary-cards@release
+        env:
+          # Opcional: crea el secret PROFILE_TOKEN (PAT con scope "repo") para incluir repositorios privados
+          GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
+        with:
+          USERNAME: ${{ github.repository_owner }}
+          BRANCH_NAME: main
