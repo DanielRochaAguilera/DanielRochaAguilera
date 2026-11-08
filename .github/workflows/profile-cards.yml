@@ -12,6 +12,7 @@ jobs:
   cards:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: vn7n24fzkq/github-profile-summary-cards@release
         env:
           # Opcional: crea el secret PROFILE_TOKEN (PAT con scope "repo") para incluir repositorios privados
